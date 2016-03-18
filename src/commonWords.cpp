@@ -18,15 +18,15 @@ char ** commonWords(char *str1, char *str2) {
 		return NULL;
 
 	int i, j, k = 0, l = 0, x;
-	int count = 0;
-	int check = 0;
+	int c = 0;
+	int m = 0;
 	char *p;
-	char **temp;
+	char **t;
 	p = NULL;
 	if (str1 == NULL&&str2 == NULL){
 		return NULL;
 	}
-	temp = (char**)malloc(sizeof(char*) * 10);
+	t = (char**)malloc(sizeof(char*) * 10);
 
 
 	for (i = 0; str1[i] != '\0'; i++){
@@ -34,32 +34,32 @@ char ** commonWords(char *str1, char *str2) {
 			if (str1[i] == str2[j] && str1[i] != ' '&& str1[i + 1] == str2[j + 1] && str1[i + 1] != '\0' && str2[j + 1] != '\0')
 			{
 
-				count = 0;
+				c = 0;
 				x = 0;
 				while (str1[i] == str2[j] && str1[i] != ' '&& str1[i] != '\0'&&str2[j] != '\0'&&str1[i] != 32)
 				{
 
 					i++;
 					j++;
-					count++;
-					check++;
+					c++;
+					m++;
 				}
-				temp[l] = (char*)malloc(sizeof(char)* count);
+				t[l] = (char*)malloc(sizeof(char)* c);
 
-				for (k = i - count; k <i; k++)
+				for (k = i - c; k <i; k++)
 				{
-					temp[l][x] = str1[k];
+					t[l][x] = str1[k];
 					x++;
 
 				}
-				temp[l][x] = '\0';
+				t[l][x] = '\0';
 				l++;
 			}
 
 		}
 	}
-	if (check != 0){
-		return temp;
+	if (m != 0){
+		return t;
 	}
 	else{
 		return NULL;
