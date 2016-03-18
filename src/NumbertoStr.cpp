@@ -1,5 +1,5 @@
 /*
-OVERVIEW: Given a float number ,Convert it into a string 
+OVERVIEW: Given a float number ,Convert it into a string
 
 INPUTS: A Float,Final string ,How many digits after decimal has to be displayed .
 Its zero for integers.
@@ -18,8 +18,65 @@ NOTES: Don't create new string.
 */
 
 #include <stdio.h>
+#include<string.h>
+#include<math.h>
+void number_to_str(float number, char *str, int afterdecimal)
+{
+	int j = 0;
+	if (number < 0)
+	{
+		str[j] = '-';
+		j++;
+		number = -number;
+	}
+	double b = 10;
+	int i = (int)number;
+	int m = i;
+	float f = (float)(number - i);
+	int k = (int)(f*(pow(b, afterdecimal)));
+	int p = k;
+	int c = 0, l, n = 0;
+	while (i > 0)
+	{
+		n++;
+		i = i / 10;
+	}
+	i = m;
+	n--;
+	while (i > 0)
+	{
+		l = pow(b, n);
+		str[j] = (i / l) + '0';
+		i = i %l;
+		n--;
+		j++;
+	}
+	if (k == 0 || afterdecimal == 0){
+		str[j] = '\0';
+	}
+	str[j] = '.';
+	j++;
 
-
-void number_to_str(float number, char *str,int afterdecimal){
-	
+	n = 0;
+	while (k > 0)
+	{
+		n++;
+		k = k / 10;
+	}
+	n--;
+	k = p;
+	while (k > 0)
+	{
+		l = pow(b, n);
+		str[j] = (k / l) + '0';
+		k = k %l;
+		n--;
+		j++;
+	}
+	str[j] = '\0';
 }
+
+
+
+
+

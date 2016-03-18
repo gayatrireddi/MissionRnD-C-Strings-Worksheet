@@ -1,3 +1,4 @@
+
 /*
 OVERVIEW: Given a string, return the letter at Kth index from the end of the string.
 E.g.: Input: "qwertyui", 3. Output: 't' (index starting from zero).
@@ -12,5 +13,12 @@ NOTES:
 */
 
 char KthIndexFromEnd(char *str, int K) {
-	return '\0';
+	int n = 0;
+	if (str == '\0' || str == "")
+		return '\0';
+	while (str[n] != '\0')
+		n++;
+	if (K < n || K>0)
+		return str[n - K - 1];
 }
+
